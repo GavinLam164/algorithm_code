@@ -7,7 +7,7 @@ public class MergeSort implements Sort {
     }
 
     private void mergeSort(int[] arr, int i, int j) {
-        if(i >= j) return;
+        if(i >= j) return; // 元素个数小于等于1，直接return
         int mid = i + (j - i) / 2;
         // 解决[i, mid]的子数组问题
         mergeSort(arr, i, mid);

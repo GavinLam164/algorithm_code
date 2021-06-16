@@ -7,5 +7,6 @@ public class TestSort {
         ArrayUtils.test(new InsertionSort());
         ArrayUtils.test(new BubbleSort());
         ArrayUtils.test(new MergeSort());
+        ArrayUtils.test(new QuickSort());
     }
 }
