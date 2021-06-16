@@ -23,12 +23,12 @@ public class HeapSort implements Sort{
         arr[j] = tmp;
     }
 
-    public void heapInsert(int[] arr, int i) {
-        int parentIndex = (i - 1) / 2; // 计算父节点下标位置
-        while(arr[parentIndex] < arr[i]) { // 若父节点大于当前节点，则已经满足了大根堆性质，跳出循环
-            swap(arr, parentIndex, i);
-            i = parentIndex; // 移动至父节点下标位置
-            parentIndex = (i - 1) / 2; // 计算父节点下标位置
+    public void heapInsert(int[] arr, int currentIndex) {
+        int parentIndex = (currentIndex - 1) / 2; // 计算父节点下标位置
+        while(arr[parentIndex] < arr[currentIndex]) { // 若父节点大于当前节点，则已经满足了大根堆性质，跳出循环
+            swap(arr, parentIndex, currentIndex);
+            currentIndex = parentIndex; // 移动至父节点下标位置
+            parentIndex = (currentIndex - 1) / 2; // 计算父节点下标位置
         }
     }
 
