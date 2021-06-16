@@ -15,8 +15,8 @@ public class QuickSort implements Sort{
 
     // 改写QuickBase，以支持[start,end]区间的荷兰国旗问题
     public int[] base(int[] arr, int start, int end, int K) {
-        // l 表示 [0,l]为元素值小于K的区域
-        // r 表示 [r,arr.length - 1]为元素值大于K的区域
+        // l 表示 [start,l]为元素值小于K的区域
+        // r 表示 [r,end]为元素值大于K的区域
         // i 表示 当前遍历的元素下标
         int l = start - 1, r = end + 1, i = start;
         while(i < r) { // 当前遍历的元素下标碰到了元素值大于K的区域，表示区域划分结束
@@ -31,8 +31,8 @@ public class QuickSort implements Sort{
             }
         }
         // 区域划分结束
-        // [0,l]为元素值小于K的区域
-        // [r,arr.length - 1]为元素值大于K的区域
+        // [start,l]为元素值小于K的区域
+        // [r,end]为元素值大于K的区域
         // [l+1,r-1]为元素值等于K的区域，若区域交错则证明数组arr中没有等于K的元素值
         return new int[] {
                 l + 1,
