@@ -9,5 +9,6 @@ public class TestSort {
         ArrayUtils.test(new MergeSort());
         ArrayUtils.test(new QuickSort());
         ArrayUtils.test(new HeapSort());
+        ArrayUtils.test(new RadixSort());
     }
 }
