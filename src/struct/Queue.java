@@ -18,7 +18,7 @@ public class Queue {
 
     // 出队
     public int poll() {
-        if(head == null) return -1; // 队列为空，返回-1
+        if(isEmpty()) return -1; // 队列为空，返回-1
         // 取出头节点的值，并将头节点设置为下一个节点
         LinkNode next = head.next;
         int val = head.val;
