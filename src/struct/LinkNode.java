@@ -20,7 +20,7 @@ public class LinkNode {
         LinkNode tmp = head;
         while(tmp != null) {
             System.out.println(tmp.val);
-            tmp = tmp.next;
+            tmp = tmp.next; // 不断的next，将指针挪到下一个节点
         }
     }
 }
