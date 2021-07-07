@@ -79,6 +79,7 @@ public class HashMap {
         hashMap.remove("164");
 
         System.out.println(hashMap.get("164"));
+
     }
 
 }
