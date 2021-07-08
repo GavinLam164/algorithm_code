@@ -46,17 +46,25 @@ public class TreeNodeTraverse {
     // 后续遍历
     public void postOrder(TreeNode root) {
         if (root == null) return;
-        TreeNode p = root;
         TreeNode c = null;
         Stack<TreeNode> stack = new Stack<>();
-        stack.push(p);
+        stack.push(root);
+        // 哨兵节点，用于判断遍历的上一个节点
+        // 1. 若哨兵节点不是栈顶元素的左孩子和右孩子，则证明左右两颗子树都没遍历，向左孩子移动
+        // 2. 若哨兵节点是栈顶元素的左孩子，则证明左子树遍历完成，可进行右子树遍历，向右孩子移动
+        // 3. 若哨兵节点是栈顶元素的右孩子或者栈顶元素没有子节点
+        //    则证明左右两颗子树遍历完成，可将栈顶元素弹出输后将哨兵节点指向弹出的栈顶元素，继续遍历过程
+
+        TreeNode p = new TreeNode(-1);
+
         while(!stack.isEmpty()) {
             c = stack.peek();
-            if(c.left != null && p != c.left && p != c.right) {
+
+            if(c.left != null && p != c.left && p != c.right) { // 1
                 stack.push(c.left);
-            }else if(c.right != null && p != c.right) {
+            }else if(c.right != null && p != c.right) { // 2
                 stack.push(c.right);
-            }else {
+            }else { // 3
                 System.out.print(stack.pop().val + "\t");
                 p = c;
             }
