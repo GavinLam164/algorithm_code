@@ -63,7 +63,53 @@ public class TreeNodeMorris {
     }
 
     private void postOrder(TreeNode root) {
+        if(root == null) return;
+        TreeNode cur1 = root;
+        TreeNode cur2 = null;
+        while(cur1 != null) {
+            cur2 = cur1.left;
+            if(cur2 != null) {
+                while(cur2.right != null && cur2.right != cur1) {
+                    cur2 = cur2.right;
+                }
 
+                if(cur2.right == null) { // 第一次遍历到cur1，设置从cur2回到cur1的引用
+                    cur2.right = cur1;
+
+                    cur1 = cur1.left; // cur1继续遍历左孩子
+                }else { // 第二次遍历到cur1，证明左子树遍历完了
+
+                    cur2.right = null; // 需要先删除引用，避免影响链表翻转
+                    printPostOrder(cur1.left);
+                    cur1 = cur1.right; // cur1继续遍历右孩子
+                }
+            }else {
+                cur1 = cur1.right;
+            }
+        }
+        printPostOrder(root);
+        System.out.println();
+    }
+
+    // 后续遍历有所不同，需通过将节点翻转输出，再还原节点关系，类似于链表翻转
+    private void printPostOrder(TreeNode root) {
+        TreeNode pre = null;
+        TreeNode next = null;
+        while(root != null) {
+            next = root.right;
+            root.right = pre;
+            pre = root;
+            root = next;
+        }
+        root = pre;
+        pre = null;
+        while(root != null) {
+            System.out.print(root.val + "\t");
+            next = root.right;
+            root.right = pre;
+            pre = root;
+            root = next;
+        }
     }
 
     public static void main(String[] args) {
@@ -82,8 +128,8 @@ public class TreeNodeMorris {
         1	3	4	5	6	7	8
         1	4	3	6	8	7	5
          */
-        traverse.preOrder(root);
-        traverse.inOrder(root);
+//        traverse.preOrder(root);
+//        traverse.inOrder(root);
         traverse.postOrder(root);
     }
 
